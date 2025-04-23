@@ -1,329 +1,76 @@
 <!DOCTYPE html>
-<f lang="en">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Profile Viewer</title>
+  <meta charset="UTF-8" />
+  <title>Hi Kyra ❤️</title>
   <style>
     body {
-      background-color: #111111;
-      font-family: 'Segoe UI', 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e63946; /* rich red */
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 900;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      overflow-y: auto;
+      text-align: center;
+      position: relative;
     }
 
-    .column-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
+    .message {
+      font-size: 2rem;
+      max-width: 600px;
+      z-index: 2;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
     }
 
-    .container {
-      width: 500px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px #00f0ff44;
-      background-color: #1a1a1a;
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: float 10s infinite ease-in-out;
+      opacity: 0.8;
+      color: #fff0f5;
     }
 
-    .slide {
-      display: none;
-      flex-direction: column;
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
     }
-
-    .slide.active {
-      display: flex;
-    }
-
-    .top-box {
-      background-color: #00f0ff;
-      height: 250px;
-    }
-
-    .top-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .bottom-box {
-      background-color: #1a1a1a;
-      color: #ffffff;
-      padding: 16px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .dots {
-      margin-top: 12px;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.4);
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .dot.active {
-      background-color: #ffffff;
-    }
-
-    .tweet-feed {
-        max-height: 270px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 16px;
-    }
-
-    .tweet {
-        background-color: #2a2a2a;
-        color: #ffffff;
-        padding: 12px;
-        border-radius: 8px;
-        font-size: 14px;
-        line-height: 1.4;
-        box-shadow: 0 0 5px #00f0ff22;
-    }
-
-    .chart-buttons {
-        display: flex;
-        justify-content: center;
-        margin-top: 12px;
-        gap: 10px;
-    }
-
-    .chart-buttons button {
-        background-color: transparent;
-        color: #00f0ff;
-        border: 1px solid #00f0ff;
-        border-radius: 6px;
-        padding: 6px 12px;
-        cursor: pointer;
-        font-size: 12px;
-        transition: background-color 0.2s;
-    }
-
-    .chart-buttons button:hover {
-        background-color: #00f0ff22;
-    }
-
   </style>
 </head>
 <body>
-<div class="column-wrapper">
-    <div class="container", id="viewer1">
-    <!-- Slides -->
-        <div class="slide active">
-            <div class="top-box">
-                <img src="https://media.istockphoto.com/id/1587604256/photo/portrait-lawyer-and-black-woman-with-tablet-smile-and-happy-in-office-workplace-african.jpg?s=612x612&w=0&k=20&c=n9yulMNKdIYIQC-Qns8agFj6GBDbiKyPRruaUTh4MKs=" alt="Person 1">
-            </div>
-            <div class="bottom-box">
-                <p>Jordan is a creative director who brings visual storytelling to life. They specialize in branding and immersive campaigns. When not working, they mentor young designers entering the industry.</p>
-            </div>
-        </div>
 
-        <div class="slide">
-            <div class="bottom-box" style="padding: 0;">
-                <div class="tweet-feed">
-                    <div class="tweet">💬 “Design is not just what it looks like and feels like. Design is how it works.”</div>
-                    <div class="tweet">🚀 Just launched our beta version — thanks for all the feedback so far!</div>
-                    <div class="tweet">📊 A/B testing results are in — and they’re surprisingly different from user interviews.</div>
-                    <div class="tweet">🧠 Reading *Hooked* by Nir Eyal again. Still full of gems for product thinking.</div>
-                    <div class="tweet">🎤 Speaking at #UXNext on bridging research and execution — come say hi!</div>
-                </div>
-            </div>
-        </div>
+  <div class="message">
+    Hi Kyra!<br>
+    You are the most beautiful,<br>
+    thoughtful, and soul-seeing person<br>
+    I could ever hope to meet. ❤️
+  </div>
 
-        <div class="slide">
-            <div class="bottom-box" style="padding: 16px;">
-                <h3 style="color: #00f0ff; margin-top: 0;">Investment</h3>
-                <svg id="stockChart" width="100%" height="120" viewBox="0 0 300 120" preserveAspectRatio="none">
-                    <!-- Y-axis ticks -->
-                    <text x="0" y="20" fill="#888" font-size="10">$160</text>
-                    <text x="0" y="60" fill="#888" font-size="10">$140</text>
-                    <text x="0" y="100" fill="#888" font-size="10">$120</text>
-                    
-                    <!-- Horizontal grid lines -->
-                    <line x1="30" y1="20" x2="300" y2="20" stroke="#333" stroke-width="1" />
-                    <line x1="30" y1="60" x2="300" y2="60" stroke="#333" stroke-width="1" />
-                    <line x1="30" y1="100" x2="300" y2="100" stroke="#333" stroke-width="1" />
-                
-                    <!-- Chart line -->
-                    <polyline 
-                    id="stockLine"
-                    fill="none"
-                    stroke="#00f0ff"
-                    stroke-width="2"
-                    points="30,80 70,60 110,65 150,40 190,50 230,30 270,20" />
-                
-                    <!-- X-axis labels -->
-                    <text x="30" y="115" fill="#888" font-size="10">9AM</text>
-                    <text x="90" y="115" fill="#888" font-size="10">12PM</text>
-                    <text x="150" y="115" fill="#888" font-size="10">3PM</text>
-                    <text x="210" y="115" fill="#888" font-size="10">6PM</text>
-                    <text x="270" y="115" fill="#888" font-size="10">Close</text>
-                </svg>
-            
-                <div class="chart-buttons">
-                    <button onclick="setChartData('1D')">1D</button>
-                    <button onclick="setChartData('1W')">1W</button>
-                    <button onclick="setChartData('1M')">1M</button>
-                </div>
-            </div>
-        </div>
+  <!-- scattered hearts -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+    }
+  </script>
 
-        <div class="slide">
-            <div class="top-box">
-                <img src="https://via.placeholder.com/300x250?text=Person+4" alt="Person 4">
-            </div>
-            <div class="bottom-box">
-                <p>Sasha is a UX researcher who thrives on uncovering user pain points. They lead cross-functional workshops to align strategy. On weekends, they illustrate comic zines.</p>
-            </div>
-        </div>
-
-        <!-- Dots navigation -->
-        <div class="dots">
-            <div class="dot active" onclick="showSlide(0)"></div>
-            <div class="dot" onclick="showSlide(1)"></div>
-            <div class="dot" onclick="showSlide(2)"></div>
-            <div class="dot" onclick="showSlide(3)"></div>
-        </div>
-    </div>
-
-    <!-- Spacer between viewers -->
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 40px;"></div>
-
-    <div class="container" id="viewer2">
-        <!-- Slides -->
-        <div class="slide active">
-            <div class="top-box">
-                <img src="https://media.istockphoto.com/id/1587604256/photo/portrait-lawyer-and-black-woman-with-tablet-smile-and-happy-in-office-workplace-african.jpg?s=612x612&w=0&k=20&c=n9yulMNKdIYIQC-Qns8agFj6GBDbiKyPRruaUTh4MKs=" alt="Person 1">
-            </div>
-            <div class="bottom-box">
-                <p>Jordan is a creative director who brings visual storytelling to life. They specialize in branding and immersive campaigns. When not working, they mentor young designers entering the industry.</p>
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="bottom-box" style="padding: 0;">
-                <div class="tweet-feed">
-                    <div class="tweet">💬 “Design is not just what it looks like and feels like. Design is how it works.”</div>
-                    <div class="tweet">🚀 Just launched our beta version — thanks for all the feedback so far!</div>
-                    <div class="tweet">📊 A/B testing results are in — and they’re surprisingly different from user interviews.</div>
-                    <div class="tweet">🧠 Reading *Hooked* by Nir Eyal again. Still full of gems for product thinking.</div>
-                    <div class="tweet">🎤 Speaking at #UXNext on bridging research and execution — come say hi!</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="bottom-box" style="padding: 16px;">
-                <h3 style="color: #00f0ff; margin-top: 0;">Investment</h3>
-                <svg id="stockChart" width="100%" height="120" viewBox="0 0 300 120" preserveAspectRatio="none">
-                    <!-- Y-axis ticks -->
-                    <text x="0" y="20" fill="#888" font-size="10">$160</text>
-                    <text x="0" y="60" fill="#888" font-size="10">$140</text>
-                    <text x="0" y="100" fill="#888" font-size="10">$120</text>
-                    
-                    <!-- Horizontal grid lines -->
-                    <line x1="30" y1="20" x2="300" y2="20" stroke="#333" stroke-width="1" />
-                    <line x1="30" y1="60" x2="300" y2="60" stroke="#333" stroke-width="1" />
-                    <line x1="30" y1="100" x2="300" y2="100" stroke="#333" stroke-width="1" />
-                
-                    <!-- Chart line -->
-                    <polyline 
-                    id="stockLine"
-                    fill="none"
-                    stroke="#00f0ff"
-                    stroke-width="2"
-                    points="30,80 70,60 110,65 150,40 190,50 230,30 270,20" />
-                
-                    <!-- X-axis labels -->
-                    <text x="30" y="115" fill="#888" font-size="10">9AM</text>
-                    <text x="90" y="115" fill="#888" font-size="10">12PM</text>
-                    <text x="150" y="115" fill="#888" font-size="10">3PM</text>
-                    <text x="210" y="115" fill="#888" font-size="10">6PM</text>
-                    <text x="270" y="115" fill="#888" font-size="10">Close</text>
-                </svg>
-            
-                <div class="chart-buttons">
-                    <button onclick="setChartData('1D')">1D</button>
-                    <button onclick="setChartData('1W')">1W</button>
-                    <button onclick="setChartData('1M')">1M</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="top-box">
-                <img src="https://via.placeholder.com/300x250?text=Person+4" alt="Person 4">
-            </div>
-            <div class="bottom-box">
-                <p>Sasha is a UX researcher who thrives on uncovering user pain points. They lead cross-functional workshops to align strategy. On weekends, they illustrate comic zines.</p>
-            </div>
-        </div>
-
-        <!-- Dots navigation -->
-        <div class="dots">
-            <div class="dot active" onclick="showSlide(0)"></div>
-            <div class="dot" onclick="showSlide(1)"></div>
-            <div class="dot" onclick="showSlide(2)"></div>
-            <div class="dot" onclick="showSlide(3)"></div>
-        </div>
-    </div>
-</div>
-    <script>
-        function setupViewer(viewerId) {
-            const container = document.getElementById(viewerId);
-            const slides = container.querySelectorAll('.slide');
-            const dots = container.querySelectorAll('.dot');
-            const chart = container.querySelector('#stockLine');
-    
-            const chartData = {
-                '1D': "30,80 70,60 110,65 150,40 190,50 230,30 270,20",
-                '1W': "30,70 70,50 110,60 150,30 190,55 230,45 270,35",
-                '1M': "30,90 70,70 110,60 150,40 190,50 230,55 270,45"
-            };
-    
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-                dots[i].classList.toggle('active', i === index);
-                });
-            }
-    
-            dots.forEach((dot, index) => {
-                dot.onclick = () => showSlide(index);
-            });
-    
-            container.querySelectorAll('button').forEach(btn => {
-                btn.onclick = () => {
-                const range = btn.textContent;
-                if (chart) chart.setAttribute('points', chartData[range]);
-                };
-            });
-    
-            showSlide(0); // Show first slide on load
-        }
-    
-        // Init both viewers
-        setupViewer('viewer1');
-        setupViewer('viewer2');
-    </script>
-  
 </body>
 </html>
