@@ -1,7 +1,89 @@
-<body> 
-    <div class="container">
-        <h1>Welcome to My Website</h1>
-        <p>This is a simple HTML page with a header and a paragraph.</p>
-    </div>
-    <script src="script.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Overview</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+    }
+    .top-panel {
+      background-color: #0a0f23;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-bottom: 1rem;
+    }
+    .description {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #d1d5db;
+    }
+    .graph-container {
+      padding: 2rem 1rem;
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-panel">
+    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Image" class="profile-image">
+    <h2>John Doe</h2>
+    <p class="description">Tech investor. Passionate about blockchain and green energy stocks.</p>
+  </div>
+  <div class="graph-container">
+    <canvas id="portfolioChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('portfolioChart').getContext('2d');
+    const portfolioChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Portfolio Value ($)',
+          data: [12000, 13500, 12800, 14200, 15000, 16000],
+          fill: false,
+          borderColor: '#10b981',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              color: '#e5e7eb'
+            }
+          }
+        }
+      }
+    });
+  </script>
 </body>
+</html>
