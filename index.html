@@ -7,7 +7,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #e63946; /* rich red */
+      background-color: #e63946; /* Romantic red */
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-weight: 900;
       color: white;
@@ -30,21 +30,25 @@
     .heart {
       position: absolute;
       font-size: 24px;
-      animation: float 10s infinite ease-in-out;
-      opacity: 0.8;
+      animation: float 6s linear forwards;
       color: #fff0f5;
+      opacity: 0.8;
+      z-index: 1;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(80vh) rotate(0deg);
         opacity: 0;
       }
-      50% {
+      10% {
+        opacity: 1;
+      }
+      90% {
         opacity: 1;
       }
       100% {
-        transform: translateY(-10vh) rotate(360deg);
+        transform: translateY(-50vh) rotate(360deg);
         opacity: 0;
       }
     }
@@ -59,17 +63,26 @@
     I could ever hope to meet. ❤️
   </div>
 
-  <!-- scattered hearts -->
+  <!-- JavaScript for never-ending hearts -->
   <script>
-    for (let i = 0; i < 20; i++) {
+    function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
+      heart.innerText = '❤️';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = Math.random() * 100 + 'vh';
-      heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
-      heart.innerHTML = '❤️';
+      heart.style.fontSize = (Math.random() * 40 + 16) + 'px';
+      heart.style.animationDuration = (Math.random() * 4 + 4) + 's'; // 4–8s
+
       document.body.appendChild(heart);
+
+      // Remove heart after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
     }
+
+    // Create hearts continuously
+    setInterval(createHeart, 300); // every 300ms
   </script>
 
 </body>
